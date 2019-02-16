@@ -1,5 +1,5 @@
 
-export function Lazy() {
+export function Lazy(id: string) {
   return (proto, prop) => {
       const { componentDidLoad } = proto;
       proto.componentDidLoad = function () {
@@ -11,7 +11,7 @@ export function Lazy() {
               io = null;
             }
           });
-          io.observe(document.querySelector('my-component'));
+          io.observe(document.querySelector(`#${id}`));          
         }
         else {
           // fall back to setTimeout for Safari and IE

@@ -1,4 +1,4 @@
-import { Component, Method, Element } from '@stencil/core';
+import { Component, Method } from '@stencil/core';
 import { Lazy } from '../../utils/utils';
 
 @Component({
@@ -7,9 +7,7 @@ import { Lazy } from '../../utils/utils';
 })
 export class MyComponent {
 
-  @Element() el: HTMLElement;
-
-  @Lazy()
+  @Lazy("test")
   @Method()
   testLazy() {
     console.log("lazy method called");
@@ -24,6 +22,6 @@ export class MyComponent {
   }
 
   render() {
-    return <div>Hello, World!</div>;
+    return <div id="test">Hello, World!</div>;
   }
 }
