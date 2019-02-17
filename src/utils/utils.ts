@@ -26,8 +26,8 @@ export function Lazy(hostProperty?: string) {
       hostProperty = proto["__lazyHost"];
     }
 
-    const { componentDidLoad } = proto;
-      proto.componentDidLoad = function () {
+    const { render } = proto;
+      proto.render = function () {
         if ('IntersectionObserver' in window) {
           let io = new IntersectionObserver((data: any) => {
             if (data[0].isIntersecting) {
@@ -45,7 +45,7 @@ export function Lazy(hostProperty?: string) {
           }, 300);
         }
 
-        return componentDidLoad && componentDidLoad.apply(this);
+        return render.apply(this);
       };
   };
 }
