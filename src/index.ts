@@ -19,7 +19,7 @@ lazyCallback() {
 ```
  */
 export function Lazy(hostProperty?: string) {
-  return (proto, prop) => {
+  return (proto: any, prop: any) => {
     if (!hostProperty && !proto["__lazyHost"]) {
       throw new Error("@Lazy() decorator requires either a @LazyHost(), or a `hostProperty` argument that matches the name of the `@Element()` property.");
     } else if (!hostProperty) {
@@ -52,7 +52,7 @@ export function Lazy(hostProperty?: string) {
 
 /** Use on @Element. */
 export function LazyHost() {
-  return (proto, prop) => {
+  return (proto: any, prop: any) => {
     proto.__lazyHost = prop;
   }
 }
