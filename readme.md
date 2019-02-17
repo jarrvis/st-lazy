@@ -5,3 +5,16 @@
 
 ## What is it?
 st-lazy is [Stencil](https://stenciljs.com/) decorator that allows you to call component method as the user scrolls component into the viewport. On supported browsers (Chrome and chrome based browsers, Firefox and Edge) it uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to accomplish this functionality. For Safari and IE it simply falls back to setTimeout. Inspired by [st-img](https://github.com/jgw96/st-img)
+
+## How to use it?
+Option 1: passing host element with @LazyHost
+https://gist.github.com/jarrvis/5f02667c89eb5f3edcd6b19b8053faef
+
+Option 2: passing host element manually
+https://gist.github.com/jarrvis/12c6e5c730a826365f01a39c7d8684f1
+
+## When use it?
+
+
+## See also
+[lazy-fetch](https://github.com/jarrvis/lazy-fetch)
