@@ -3,7 +3,6 @@ import { Lazy, LazyHost } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css',
   shadow: true
 })
 export class MyComponent {
