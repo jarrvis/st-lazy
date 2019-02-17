@@ -1,14 +1,16 @@
-import { Component, Method } from '@stencil/core';
-import { Lazy } from '../../utils/utils';
+import { Component, Element } from '@stencil/core';
+import { Lazy, LazyHost } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css'
+  styleUrl: 'my-component.css',
+  shadow: true
 })
 export class MyComponent {
+   
+  @LazyHost() @Element() host;
 
-  @Lazy("test")
-  @Method()
+  @Lazy()
   testLazy() {
     console.log("lazy method called");
   }
@@ -22,6 +24,6 @@ export class MyComponent {
   }
 
   render() {
-    return <div id="test">Hello, World!</div>;
+    return <div>Hello, World!</div>;
   }
 }
