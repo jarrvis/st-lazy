@@ -8,13 +8,43 @@ st-lazy is [Stencil](https://stenciljs.com/) decorator that allows you to call c
 
 ## How to use it?
 Option 1: passing host element with @LazyHost
-https://gist.github.com/jarrvis/5f02667c89eb5f3edcd6b19b8053faef
+```javascript
+
+import { Component, Element } from '@stencil/core';
+import { Lazy, LazyHost } from 'st-lazy';
+
+@Component({ tag: 'lazy-component', shadow: true })
+export class LazyComponent {
+
+  @LazyHost() @Element() host;
+
+  @Lazy()
+  someMethod() { console.log("someMethod was called because user scrolled to LazyComponent"); }
+
+  render() { return <div>Hello, World!</div>; }
+}
+```
 
 Option 2: passing host element manually
-https://gist.github.com/jarrvis/12c6e5c730a826365f01a39c7d8684f1
+```javascript
+
+import { Component, Element } from '@stencil/core';
+import { Lazy } from 'st-lazy';
+
+@Component({ tag: 'lazy-component', shadow: true })
+export class LazyComponent {
+
+  @Element() host;
+
+  @Lazy("host")
+  someMethod() { console.log("someMethod was called because user scrolled to LazyComponent"); }
+
+  render() { return <div>Hello, World!</div>; }
+}
+```
 
 ## When use it?
-
+TODO
 
 ## See also
-[lazy-fetch](https://github.com/jarrvis/lazy-fetch)
+TODO: [lazy-fetch](https://github.com/jarrvis/lazy-fetch)
