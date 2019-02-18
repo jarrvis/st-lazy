@@ -1,11 +1,10 @@
 {
   "name": "st-lazy",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "@Lazy decorator for Stencil to call annotated method when component is scrolled to viewport",
-  "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types" : "dist/index.d.ts",
-  "unpkg": "dist/ionic.js",
+  "unpkg": "dist/index.js",
   "files": [
     "dist/"
   ],
@@ -16,5 +15,23 @@
   "devDependencies": {
     "typescript": "^3.3.3"
   },
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarrvis/st-lazy"
+  },
+  "keywords": [
+    "Stencil",
+    "decrator",
+    "Web components",
+    "scroll",
+    "lazy loading",
+    "IntersectionObserver",
+    "st-img"
+  ],
+  "author": "Michał Kaliszewski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarrvis/st-lazy"
+  },
+  "homepage": "https://github.com/jarrvis/st-lazy"
 }

@@ -45,7 +45,7 @@ export function Lazy(hostProperty?: string) {
           }, 300);
         }
 
-        return componentDidLoad.apply(this);
+        return componentDidLoad && componentDidLoad.apply(this);
       };
   };
 }
