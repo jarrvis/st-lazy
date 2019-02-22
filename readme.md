@@ -180,3 +180,7 @@ st-lazy-img is a Stencil component to lazy load image while its scrolled to view
     </st-lazy-img>
 </body>
 ```
+
+gives
+
+![lazy image load](https://j.gifs.com/k85lwN.gif)

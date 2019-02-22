@@ -1,6 +1,15 @@
 # st-lazy-img
 
+## Component to lazy load image while its scrolled to viewport. 
 
+## Usage
+```html
+    <st-lazy-img
+        src="https://stenciljs.com/assets/img/logo.png"
+        fallback-src="/some/fallback/img/url"
+        alt="Lazy image">
+    </st-lazy-img>
+```
 
 <!-- Auto Generated Below -->
 
