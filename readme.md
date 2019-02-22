@@ -13,19 +13,20 @@ npm i st-lazy
 ```
 You can also benefit from this package outside of Stencil world. To do so you can either 
 - put `st-lazy` as dependency in your package.json and import web component that is relevant for you
-- or if outside of npm you can pop this script tag `script async defer src='https://unpkg.com/st-lazy@0.5.0/dist/stlazy.js'></script>` into you index.html
+- or if outside of npm you can pop this script tag `<script async defer src='https://unpkg.com/st-lazy@0.7.0/dist/stlazy.js'></script>` into you index.html
 Then you can just use web components in your html/jsx 
 
 # Repo contains
 - [@Lazy decorator](#1-@Lazy)
 - [st-lazy component](#2-st-lazy)
 - [st-lazy-img component](#3-st-lazy-img)
+- [st-lazy-fetch component](#4-st-lazy-fetch)
 
 
 
 # 1. @Lazy
 
-@Lazy is a simple decorator that allows you to call component method as the user scrolls component into the viewport.
+@Lazy is a decorator that allows you to call component method as the user scrolls component into the viewport.
 
 ## How to use it?
 It's very simple: you just need to anotate your method with @Lazy and it will be called when host component is scrolled to viewport. Method will be called once - the first time you scroll to component. Additionally you need to pass host's @Element. You can do it in two ways:
@@ -67,7 +68,7 @@ export class LazyComponent {
 ```
 
 ## When use it?
-Basically you can think of every action that you would normally do in componentWillLoad. Maybe some of those actions are time consuming, generating not needed network traffic and not giving any benefit to most of users? Good example is calling an API to get data to be presented by component. Maybe most of users are not even checking some forgotten carousel on the bottom of every page in your app?
+Basically you can think of every action that you would normally do with the load of the page/component. Maybe some of those actions are time consuming, generating not needed network traffic and not giving any benefit to most of users? Good example is calling an API to get data to be presented by component. Maybe most of users are not even checking some forgotten carousel on the bottom of every page in your app?
 
 ## Example
 Following component
@@ -184,3 +185,23 @@ st-lazy-img is a Stencil component to lazy load image while its scrolled to view
 gives
 
 ![lazy image load](https://j.gifs.com/k85lwN.gif)
+
+
+# 4. st-lazy-fetch
+
+st-lazy-fetch is a Stencil component Component to make lazy API calls. Request is done after component is scrolled into viewport.
+Plese take a look at [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as st-lazy-fetch uses same API. 
+
+## Example
+```html
+<body>
+    <div style="height: 1000px"></div>
+    <st-lazy-fetch
+        url="https://jsonplaceholder.typicode.com/users/1">
+    </st-lazy-fetch>
+</body>
+```
+
+gives
+
+![lazy fetch](https://j.gifs.com/xnGB4l.gif)

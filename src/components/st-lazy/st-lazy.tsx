@@ -29,6 +29,8 @@ export class StLazy {
         }
     }
 
+    componentDidLoad() {}
+
     render() {
         if(this.rendered) {
             return (

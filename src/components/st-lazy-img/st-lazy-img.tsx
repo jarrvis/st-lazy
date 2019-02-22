@@ -22,6 +22,7 @@ export class StLazyImg {
     @Prop() fallbackSrc: string;
   
     @State() oldSrc: string;
+    
     @LazyHost() @Element() el;
     
     imgEl: HTMLImageElement
@@ -33,6 +34,8 @@ export class StLazyImg {
           this.imgEl.removeAttribute('data-src');
         };
     }
+
+    componentDidLoad() {}
 
     render() {
         return (
