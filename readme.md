@@ -11,10 +11,17 @@ Just add module to your Stencil project package.json:
 ```
 npm i st-lazy
 ```
+You can also benefit from this package outside of Stencil world. To do so you can either 
+- put `st-lazy` as dependency in your package.json and import web component that is relevant for you
+- or if outside of npm you can pop this script tag `script async defer src='https://unpkg.com/st-lazy@0.5.0/dist/stlazy.js'></script>` into you index.html
+Then you can just use web components in your html/jsx 
 
 # Repo contains
 - [@Lazy decorator](#1-@Lazy)
 - [st-lazy component](#2-st-lazy)
+- [st-lazy-img component](#3-st-lazy-img)
+
+
 
 # 1. @Lazy
 
@@ -110,7 +117,7 @@ gives
 
 # 2. st-lazy
 
-st-lazy is a Stencil component to lazy load other Stencil components while its scrolled to viewport.
+st-lazy is a Stencil component to lazy load other components while its scrolled to viewport.
 
 ## Why?
 Stencil is lazy loading components by default. It loads only the ones that are actually used on the page. Here we lift it. st-lazy component is using IntersectionObserver to load the component by name only if it is in the viewport. On non supported browsers (IE, Safari) it falls back to setTimeout unless you use polyfill. 
@@ -156,3 +163,20 @@ gives
 ![lazy component load](https://j.gifs.com/k85Kk5.gif)
 
 As you can see component is not loaded untill it's scrolled onto viewport. Then full component lifecycle runs.
+
+
+# 3. st-lazy-img
+
+st-lazy-img is a Stencil component to lazy load image while its scrolled to viewport.
+
+## Example
+```html
+<body>
+    <div style="height: 1000px"></div>
+    <st-lazy-img
+        src="https://stenciljs.com/assets/img/logo.png"
+        fallback-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VWGwI_ToYUkeZjAxP16jZB94Yzus4Q5YErjzzB2C44rWKwL7"
+        alt="Lazy image">
+    </st-lazy-img>
+</body>
+```
