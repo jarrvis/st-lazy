@@ -1,6 +1,7 @@
-import { Component, Prop, State, Element } from '@stencil/core';
+import { Component, Prop, State, Element, Event, EventEmitter } from '@stencil/core';
 import { Lazy, LazyHost } from '../../utils/utils';
 
+const COMPONENT_PROP_ATTR = 'component-prop-';
 /**
  * Component to lazy load other Stencil components while its scrolled to viewport. 
  */
@@ -17,19 +18,46 @@ export class StLazy {
     /**
      * Props of component that will be lazy loaded
      */
-    @Prop() componentProps?: { [key: string]: any } = {};
+    @Prop({mutable: true}) componentProps?: { [key: string]: any } = {};
+
+    /**
+     * Prop of component to be lazy loaded 
+     */
+    @Prop() 'component-prop-?'?: string;
+    
+    /**
+     * Value of event that will be thrown while lazy loading
+     */
+    @Prop() eventValue?: string;
+
+    /**
+     * Event that will be thrown while lazy loading. Will be thrown only if `eventValue` was passed
+     */
+    @Event() loaded: EventEmitter;
 
     @State() rendered: boolean = false;
+
     @LazyHost() @Element() el;
+
+
+    componentWillLoad() {
+        [...this.el.attributes]
+            .filter(attr => attr.name.startsWith(COMPONENT_PROP_ATTR))
+            .map(prop => {
+                const name = prop.name.replace(COMPONENT_PROP_ATTR, '');
+                this.componentProps[name] = prop.value
+            })
+    }
+
+    componentDidLoad() {}
 
     @Lazy()
     loadComponent() {
         if (this.component) {
             this.rendered = true;
         }
+        return this.eventValue && this.loaded.emit(this.eventValue);
     }
-
-    componentDidLoad() {}
 
     render() {
         if(this.rendered) {
