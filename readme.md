@@ -13,7 +13,7 @@ npm i st-lazy
 ```
 You can also benefit from this package outside of Stencil world. To do so you can either 
 - put `st-lazy` as dependency in your package.json and import web component that is relevant for you
-- or if outside of npm you can pop this script tag `<script async defer src='https://unpkg.com/st-lazy@0.7.0/dist/stlazy.js'></script>` into your index.html
+- or if outside of npm you can pop this script tag `<script async defer src='https://unpkg.com/st-lazy@0.8.1/dist/stlazy.js'></script>` into your index.html
 Then you can just use web components in your html/jsx 
 
 # Repo contains
@@ -220,9 +220,8 @@ gives
 
 # 4. st-lazy-fetch
 
-st-lazy-fetch is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport.
-Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-fetch)
-Plese take a look also at [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as st-lazy-fetch is based on it. 
+st-lazy-fetch is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-fetch)
+You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as st-lazy-fetch is based on it. 
 
 ## Example
 ```html
