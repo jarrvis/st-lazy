@@ -40,12 +40,13 @@ Stencil is lazy loading components by default. It loads only the ones that are a
 
 ## Properties
 
-| Property           | Attribute          | Description                                           | Type                      | Default     |
-| ------------------ | ------------------ | ----------------------------------------------------- | ------------------------- | ----------- |
-| `component`        | `component`        | Name of component to be lazy loaded                   | `string`                  | `undefined` |
-| `component-prop-?` | `component-prop-?` | Prop of component to be lazy loaded                   | `string`                  | `undefined` |
-| `componentProps`   | --                 | Props of component that will be lazy loaded           | `{ [key: string]: any; }` | `{}`        |
-| `eventValue`       | `event-value`      | Value of event that will be thrown while lazy loading | `string`                  | `undefined` |
+| Property           | Attribute          | Description                                                                                                                                                                                         | Type                      | Default     |
+| ------------------ | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------- |
+| `component`        | `component`        | Name of component to be lazy loaded                                                                                                                                                                 | `string`                  | `undefined` |
+| `component-prop-?` | `component-prop-?` | Prop of component to be lazy loaded                                                                                                                                                                 | `string`                  | `undefined` |
+| `componentProps`   | --                 | Props of component that will be lazy loaded                                                                                                                                                         | `{ [key: string]: any; }` | `{}`        |
+| `eventValue`       | `event-value`      | Value of event that will be thrown while lazy loading                                                                                                                                               | `string`                  | `undefined` |
+| `margin`           | `margin`           | Determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left).  The values can be percentages | `string`                  | `undefined` |
 
 
 ## Events

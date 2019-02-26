@@ -1,5 +1,5 @@
 import { Component, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { Lazy, LazyHost } from '../../utils/utils';
+import { Lazy, LazyHost, LazyMargin } from '../../utils/utils';
 
 /**
  * Component to make lazy API calls. Request is done after component is scrolled into viewport 
@@ -8,18 +8,28 @@ import { Lazy, LazyHost } from '../../utils/utils';
     tag: 'st-lazy-fetch'
 })
 export class StLazyFetch {
-    /**
-     * Request headers  
-     */
-    @Prop() headers     : Headers = new Headers();
-    /**
-     * Http requst type: GET, POST, PUT, DELETE, PATCH  
-     */
-    @Prop() method      : string  = 'GET';
+
     /**
      * Request url
      */
-    @Prop() url         : string  = '';
+    @Prop() url: string  = '';
+
+    /**
+     * Request headers  
+     */
+    @Prop() headers?: Headers = new Headers();
+
+    /**
+     * Http requst type: GET, POST, PUT, DELETE, PATCH  
+     */
+    @Prop() method?: string  = 'GET';
+
+    /**
+     * Determines how far from the viewport lazy loading starts.
+     * Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). 
+     * The values can be percentages
+     */
+    @LazyMargin() @Prop() margin?: string;
   
     /**
      * Thrown as a succesfull request callback. Carries response object 

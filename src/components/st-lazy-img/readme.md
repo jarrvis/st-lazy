@@ -16,11 +16,12 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                         | Type     | Default     |
-| ------------- | -------------- | ------------------------------------------------------------------- | -------- | ----------- |
-| `alt`         | `alt`          | Alternate text to be shown in case image cannot be displayed        | `string` | `undefined` |
-| `fallbackSrc` | `fallback-src` | Source url of image to be shown in case error while loading src url | `string` | `undefined` |
-| `src`         | `src`          | Source url of image to be lazy loaded                               | `string` | `undefined` |
+| Property      | Attribute      | Description                                                                                                                                                                                         | Type     | Default     |
+| ------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `alt`         | `alt`          | Alternate text to be shown in case image cannot be displayed                                                                                                                                        | `string` | `undefined` |
+| `fallbackSrc` | `fallback-src` | Source url of image to be shown in case error while loading src url                                                                                                                                 | `string` | `undefined` |
+| `margin`      | `margin`       | Determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left).  The values can be percentages | `string` | `undefined` |
+| `src`         | `src`          | Source url of image to be lazy loaded                                                                                                                                                               | `string` | `undefined` |
 
 
 ----------------------------------------------

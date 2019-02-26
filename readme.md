@@ -4,7 +4,7 @@
 
 
 ## What is it?
-st-lazy is [Stencil](https://stenciljs.com/) collection of tools for lazy loading. Beating heart of this library is @Lazy decorator that allows you to call component method as the user scrolls component into the viewport. On supported browsers (Chrome and chrome based browsers, Firefox and Edge) it uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to accomplish this functionality. For Safari and IE it simply falls back to setTimeout. Inspired by [st-img](https://github.com/jgw96/st-img)
+`st-lazy` is [Stencil](https://stenciljs.com/) collection of tools for lazy loading. Beating heart of this library is `@Lazy` decorator that allows you to call component method as the user scrolls component into the viewport. On supported browsers (Chrome and chrome based browsers, Firefox and Edge) it uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to accomplish this functionality. For Safari and IE it simply falls back to setTimeout. Inspired by [st-img](https://github.com/jgw96/st-img)
 
 ## Installing
 Just add module to your Stencil project package.json:
@@ -13,7 +13,7 @@ npm i st-lazy
 ```
 You can also benefit from this package outside of Stencil world. To do so you can either 
 - put `st-lazy` as dependency in your package.json and import web component that is relevant for you
-- or if outside of npm you can pop this script tag `<script async defer src='https://unpkg.com/st-lazy@0.8.1/dist/stlazy.js'></script>` into your index.html
+- or if outside of npm you can pop this script tag `<script async defer src='https://unpkg.com/st-lazy@1.0.0/dist/stlazy.js'></script>` into your index.html
 Then you can just use web components in your html/jsx 
 
 # Repo contains
@@ -29,9 +29,9 @@ Then you can just use web components in your html/jsx
 @Lazy is a decorator that allows you to call component method as the user scrolls component into the viewport.
 
 ## How to use it?
-It's very simple: you just need to anotate your method with @Lazy and it will be called when host component is scrolled to viewport. Method will be called once - the first time you scroll to component. Additionally you need to pass host's @Element. You can do it in two ways:
+It's very simple: you just need to anotate your method with `@Lazy` and it will be called when host component is scrolled to viewport. Method will be called once - the first time you scroll to component. Additionally you need to pass host's `@Element`. You can do it in two ways:
 
-Option 1: passing host element with @LazyHost
+Option 1: passing host element with `@LazyHost`
 ```javascript
 
 import { Component, Element } from '@stencil/core';
@@ -60,15 +60,22 @@ export class LazyComponent {
 
   @Element() host;
 
-  @Lazy("host")
+  @Lazy({ hostProperty: "host" })
   someMethod() { console.log("someMethod was called because user scrolled to LazyComponent"); }
 
   render() { return <div>Hello, World!</div>; }
 }
 ```
+## Margin
+You can also set margin for `@Lazy`. It determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages.
+```javascript
+  @Lazy({ margin: "50%" })
+  someMethod() { console.log("someMethod was called because user scrolled to margin of LazyComponent extended by 50%"); }
+```
+All web components here have optional `padding` prop.
 
 ## When use it?
-Basically you can think of every action that you would normally do with the load of the page/component. Maybe some of those actions are time consuming, generating not needed network traffic and not giving any benefit to most of users? Good example is calling an API to get data to be presented by component. Maybe most of users are not even checking some forgotten carousel on the bottom of every page in your app?
+Basically you can think of every action that you would normally do with the load of the page/component. Maybe some of those actions are time consuming, generating not needed network traffic and not giving any benefit to most of users? Good example is calling an API to get data to be presented by component. Maybe most of users are not even checking some forgotten carousel on the bottom of every page in your app? Or you need an easy way to implement a listing page with *infinie* scrolling?
 
 ## Example
 Following component
@@ -189,7 +196,7 @@ or optionally you can pass the componentProps over javascript:
 document.querySelector('st-lazy').componentProps = { name: 'Lazy', surname: 'Stencil' }
 ```
 ## I just want to use st-lazy to be notifed about scrolling to some html
-Sure just react on the event that st-lazy will throw
+Sure just react on the event that st-lazy will throw. Will only be thrown if you pass `event-value` attribute
 ```html
   <st-lazy
     event-value="contentId">
@@ -198,7 +205,7 @@ Sure just react on the event that st-lazy will throw
 ```
 # 3. st-lazy-img
 
-st-lazy-img is a Stencil component to lazy load image while its scrolled to viewport.
+`st-lazy-img` is a Stencil component to lazy load image while its scrolled to viewport.
 Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-img)
 
 ## Example
@@ -220,8 +227,7 @@ gives
 
 # 4. st-lazy-fetch
 
-st-lazy-fetch is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-fetch)
-You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as st-lazy-fetch is based on it. 
+st-lazy-fetch is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as st-lazy-fetch is based on it. 
 
 ## Example
 ```html

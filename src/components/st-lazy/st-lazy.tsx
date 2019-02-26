@@ -1,5 +1,5 @@
 import { Component, Prop, State, Element, Event, EventEmitter } from '@stencil/core';
-import { Lazy, LazyHost } from '../../utils/utils';
+import { Lazy, LazyHost, LazyMargin } from '../../utils/utils';
 
 const COMPONENT_PROP_ATTR = 'component-prop-';
 /**
@@ -29,6 +29,13 @@ export class StLazy {
      * Value of event that will be thrown while lazy loading
      */
     @Prop() eventValue?: string;
+
+    /**
+     * Determines how far from the viewport lazy loading starts.
+     * Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). 
+     * The values can be percentages
+     */
+    @LazyMargin() @Prop() margin?: string;
 
     /**
      * Event that will be thrown while lazy loading. Will be thrown only if `eventValue` was passed
