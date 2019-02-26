@@ -8,8 +8,10 @@
 
 ## Polyfilling
 If you want `st-lazy` to work everywhere (also on IE and Safari) use polyfill. You can pop this script tag:
-`<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>`
-in index.html and that's it:) 
+```
+<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+```
+in index.html and that's it:)
 Polyfill is not included in `st-lazy` not to increase the bundle size and to leave the decision to you: either you go with setTimeout fallback or if you prefer, go with polyfill
 
 ## Installing
@@ -19,7 +21,11 @@ npm i st-lazy
 ```
 You can also benefit from this package outside of Stencil world. To do so you can either 
 - put `st-lazy` as dependency in your package.json and import web component that is relevant for you
-- or if outside of npm you can pop this script tag `<script async defer src='https://unpkg.com/st-lazy@1.0.0/dist/stlazy.js'></script>` into your index.html
+- or if outside of npm you can pop this script tag: 
+```
+<script async defer src='https://unpkg.com/st-lazy@1.0.0/dist/stlazy.js'></script>
+``` 
+into your index.html
 Then you can just use web components in your html/jsx 
 
 # Repo contains
@@ -77,6 +83,10 @@ You can also set margin for `@Lazy`. It determines how far from the viewport laz
 ```javascript
   @Lazy({ margin: "50%" })
   someMethod() { console.log("someMethod was called because user scrolled to margin of LazyComponent extended by 50%"); }
+```
+or if you want to have it dynamic (as web component `@Prop`)
+```javascript
+  @LazyMargin() @Prop() margin?: string;
 ```
 All web components here have optional `margin` prop.
 
