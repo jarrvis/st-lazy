@@ -144,10 +144,10 @@ gives
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-cmp)
 
 `lazy-cmp` is a Stencil component to lazy load other components while its scrolled to viewport.
-Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy)
+Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-cmp)
 
 ## Why?
-Stencil is lazy loading components by default. It loads only the ones that are actually used on the page. Here we lift it. st-lazy component is using IntersectionObserver to load the component by name only if it is in the viewport. On non supported browsers (IE, Safari) it falls back to setTimeout unless you use polyfill. 
+Stencil is lazy loading components by default. It loads only the ones that are actually used on the page. Here we lift it. `lazy-cmp` component is using IntersectionObserver to load the component by name only if it is in the viewport. On non supported browsers (IE, Safari) it falls back to setTimeout unless you use polyfill. 
 
 ## Example
 having a simple component
@@ -243,7 +243,7 @@ Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/componen
 
 gives
 
-![lazy image load](https://j.gifs.com/716g2G.gif)
+![lazy image load](https://j.gifs.com/NLxMyK.gif)
 
 
 # 4. lazy-fetch
