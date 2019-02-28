@@ -1,7 +1,7 @@
 {
   "name": "st-lazy",
-  "version": "2.0.2",
-  "description": "@Lazy decorator for Stencil to call annotated method when component is scrolled to viewport. Contains also web components for lazy loading that are based on @Lazy",
+  "version": "2.0.7",
+  "description": "Web components for lazy loading - you can use them everywhere, without any dependency. Contains also @Lazy decorator for Stenciljs to call annotated method when component is scrolled to viewport. Web components are based on @Lazy",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",

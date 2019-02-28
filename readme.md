@@ -4,7 +4,7 @@
 
 
 ## What is it?
-`st-lazy` is [Stencil](https://stenciljs.com/) collection of tools for lazy loading. Beating heart of this library is `@Lazy` decorator that allows you to call component method as the user scrolls component into the viewport. On supported browsers (Chrome and chrome based browsers, Firefox and Edge) it uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to accomplish this functionality. For Safari and IE it simply falls back to setTimeout. Inspired by [st-img](https://github.com/jgw96/st-img)
+`st-lazy` is a collection of tools (web components) for lazy loading. You can use them everywhere (any framework: React, Angular, Vue etc.) without any dependency (doesn't matter if you use SSR with templating system like JSP or CSR). Beating heart of this library is a [Stencil](https://stenciljs.com/) `@Lazy` decorator that allows you to call component method as the user scrolls component into the viewport. For Stencil devs: `@Lazy` is being exported in this module so you can easily use it in your Stencil projects. On supported browsers (Chrome and chrome based browsers, Firefox and Edge) `st-lazy` uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to accomplish this functionality. For Safari and IE it simply falls back to setTimeout unless you use polyfill. Inspired by [st-img](https://github.com/jgw96/st-img)
 
 ## Polyfilling
 If you want `st-lazy` to work everywhere (also on IE and Safari) use polyfill. You can pop this script tag:
@@ -15,12 +15,8 @@ in index.html and that's it:)
 Polyfill is not included in `st-lazy` not to increase the bundle size and to leave the decision to you: either you go with setTimeout fallback or if you prefer, go with polyfill
 
 ## Installing
-Just add module to your Stencil project package.json:
-```
-npm i st-lazy
-```
-You can also benefit from this package outside of Stencil world. To do so you can either 
-- put `st-lazy` as dependency in your package.json and import web component that is relevant for you
+Outside of Stencil world you can use web components. To do that you can either 
+- put `st-lazy` as dependency in your package.json and import web component that is relevant for you in your js/ts
 - or if outside of npm you can pop this script tag: 
 ```
 <script async defer src='https://unpkg.com/st-lazy@2.0.0/dist/stlazy.js'></script>
@@ -28,7 +24,13 @@ You can also benefit from this package outside of Stencil world. To do so you ca
 into your index.html
 Then you can just use web components in your html/jsx 
 
-# Repo contains
+In Stencil project, additionaly you can use `@Lazy`, just add `st-lazy` to your package.json:
+```
+npm i st-lazy
+```
+
+
+# Module contains
 - [@Lazy decorator (only for Stencil)](#1-@Lazy)
 - [lazy-cmp component](#2-lazy-cmp)
 - [lazy-img component](#3-lazy-img)
@@ -143,11 +145,11 @@ gives
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-cmp)
 
-`lazy-cmp` is a Stencil component to lazy load other components while its scrolled to viewport.
+`lazy-cmp` is a web component to lazy load other components while its scrolled to viewport.
 Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-cmp)
 
 ## Why?
-Stencil is lazy loading components by default. It loads only the ones that are actually used on the page. Here we lift it. `lazy-cmp` component is using IntersectionObserver to load the component by name only if it is in the viewport. On non supported browsers (IE, Safari) it falls back to setTimeout unless you use polyfill. 
+Stencil (and also some other web components compilers or frameworks) is lazy loading components by default. It loads only the ones that are actually used on the page not to add not needed js to be evaluated by the browser. Here we lift it. `lazy-cmp` component is using IntersectionObserver to load the component by name only if it is in the viewport. It means no html will be rendered by the browser and no js will be evaluated until you actually scroll to `lazy-cmp`. Then you dynamically render your component, it can have a complicated view, it can call the API to initialize... Great way to optimize your page, perfect for infinite scroll pages. On non supported browsers (IE, Safari) it falls back to setTimeout unless you use polyfill. 
 
 ## Example
 having a simple component
@@ -226,7 +228,7 @@ Sure just react on the event that st-lazy will throw. Will only be thrown if you
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-img)
 
-`lazy-img` is a Stencil component to lazy load image while its scrolled to viewport.
+`lazy-img` is a web component to lazy load image while its scrolled to viewport.
 Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-img)
 
 ## Example
@@ -250,7 +252,7 @@ gives
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-fetch)
 
-`lazy-fetch` is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as `lazy-fetch` is based on it. 
+`lazy-fetch` is a web component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as `lazy-fetch` is based on it. 
 
 ## Example
 ```html
