@@ -5,9 +5,9 @@ import { Lazy, LazyHost, LazyMargin } from '../../utils/utils';
  * Component to make lazy API calls. Request is done after component is scrolled into viewport 
  */
 @Component({
-    tag: 'st-lazy-fetch'
+    tag: 'lazy-fetch'
 })
-export class StLazyFetch {
+export class LazyFetch {
 
     /**
      * Request url

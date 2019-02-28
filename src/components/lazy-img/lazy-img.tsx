@@ -5,9 +5,9 @@ import { Lazy, LazyHost, LazyMargin } from '../../utils/utils';
  * Component to lazy load images while its scrolled to viewport. 
  */
 @Component({
-    tag: 'st-lazy-img'
+    tag: 'lazy-img'
 })
-export class StLazyImg {
+export class LazyImg {
 
     /**
      * Source url of image to be lazy loaded  

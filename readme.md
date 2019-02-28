@@ -23,16 +23,16 @@ You can also benefit from this package outside of Stencil world. To do so you ca
 - put `st-lazy` as dependency in your package.json and import web component that is relevant for you
 - or if outside of npm you can pop this script tag: 
 ```
-<script async defer src='https://unpkg.com/st-lazy@1.0.0/dist/stlazy.js'></script>
+<script async defer src='https://unpkg.com/st-lazy@2.0.0/dist/stlazy.js'></script>
 ``` 
 into your index.html
 Then you can just use web components in your html/jsx 
 
 # Repo contains
 - [@Lazy decorator (only for Stencil)](#1-@Lazy)
-- [st-lazy component](#2-st-lazy)
-- [st-lazy-img component](#3-st-lazy-img)
-- [st-lazy-fetch component](#4-st-lazy-fetch)
+- [lazy-cmp component](#2-lazy-cmp)
+- [lazy-img component](#3-lazy-img)
+- [lazy-fetch component](#4-lazy-fetch)
 
 
 
@@ -139,9 +139,11 @@ gives
 
 ![lazy api call](https://j.gifs.com/oVYVwB.gif)
 
-# 2. st-lazy
+# 2. lazy-cmp
 
-st-lazy is a Stencil component to lazy load other components while its scrolled to viewport.
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-cmp)
+
+`lazy-cmp` is a Stencil component to lazy load other components while its scrolled to viewport.
 Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy)
 
 ## Why?
@@ -153,22 +155,22 @@ having a simple component
 import { Component } from '@stencil/core';
 
 @Component({
-    tag: 'test-st-lazy'
+    tag: 'my-component'
 })
-export class TestStLazy {
+export class MyComponent {
     @Prop() name: string;
 
     componentWillLoad() {
-        console.log('The TestStLazy is about to be rendered');
+        console.log('The MyComponent is about to be rendered');
     }
 
     componentDidLoad() {
-        console.log('The TestStLazy has been rendered');
+        console.log('The MyComponent has been rendered');
     }
     
     render() {
         return (
-            <div><p>Was I lazy loaded with st-lazy?</p></div>
+            <div><p>Was I lazy loaded with lazy-cmp?</p></div>
         );
     }
 }
@@ -179,14 +181,14 @@ and page
 ```html
 <body>
     <div style="height: 1000px"></div>
-    <st-lazy
-        component="test-st-lazy">
-    </st-lazy>
+    <lazy-cmp
+        component="my-cmp">
+    </lazy-cmp>
 </body>
 ```
 gives
 
-![lazy component load](https://j.gifs.com/k85Kk5.gif)
+![lazy component load](https://j.gifs.com/2xRYEP.gif)
 
 As you see component is not loaded untill it's scrolled onto viewport. Then full component lifecycle runs.
 
@@ -194,64 +196,68 @@ As you see component is not loaded untill it's scrolled onto viewport. Then full
 
 Option 1: In JSX you can pass `componentProps` key/value object to st-lazy   
 ```html
-  <st-lazy
-    component="test-st-lazy"
+  <lazy-cmp
+    component="my-component"
     componentProps={{ name: 'Lazy', surname: 'Stencil' }}>
-  </st-lazy>
+  </lazy-cmp>
 ```
 Option 2: In html you can pass `component-prop-?` attributes to st-lazy
 ```html
-  <st-lazy
+  <lazy-cmp
     component="my-component"
     component-prop-name='Lazy'
     component-prop-surname='Stencil'>
-  </st-lazy>
+  </lazy-cmp>
 ```
 or optionally you can pass the componentProps over javascript:
 ```javascript
-document.querySelector('st-lazy').componentProps = { name: 'Lazy', surname: 'Stencil' }
+document.querySelector('lazy-cmp').componentProps = { name: 'Lazy', surname: 'Stencil' }
 ```
-## I just want to use st-lazy to be notifed about scrolling to some html
+## I just want to use lazy-cmp to be notifed about scrolling to some html
 Sure just react on the event that st-lazy will throw. Will only be thrown if you pass `event-value` attribute
 ```html
-  <st-lazy
+  <lazy-cmp
     event-value="contentId">
     some html...
-  </st-lazy>
+  </lazy-cmp>
 ```
-# 3. st-lazy-img
+# 3. lazy-img
 
-`st-lazy-img` is a Stencil component to lazy load image while its scrolled to viewport.
-Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-img)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-img)
+
+`lazy-img` is a Stencil component to lazy load image while its scrolled to viewport.
+Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-img)
 
 ## Example
 ```html
 <body>
     <div style="height: 1000px"></div>
-    <st-lazy-img
+    <lazy-img
         src="https://stenciljs.com/assets/img/logo.png"
         fallback-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VWGwI_ToYUkeZjAxP16jZB94Yzus4Q5YErjzzB2C44rWKwL7"
         alt="Lazy image">
-    </st-lazy-img>
+    </lazy-img>
 </body>
 ```
 
 gives
 
-![lazy image load](https://j.gifs.com/k85lwN.gif)
+![lazy image load](https://j.gifs.com/716g2G.gif)
 
 
-# 4. st-lazy-fetch
+# 4. lazy-fetch
 
-st-lazy-fetch is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/st-lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as st-lazy-fetch is based on it. 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-fetch)
+
+`lazy-fetch` is a Stencil component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as `lazy-fetch` is based on it. 
 
 ## Example
 ```html
 <body>
     <div style="height: 1000px"></div>
-    <st-lazy-fetch
+    <lazy-fetch
         url="https://jsonplaceholder.typicode.com/users/1">
-    </st-lazy-fetch>
+    </lazy-fetch>
 </body>
 ```
 

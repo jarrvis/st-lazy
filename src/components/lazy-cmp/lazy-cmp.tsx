@@ -6,9 +6,9 @@ const COMPONENT_PROP_ATTR = 'component-prop-';
  * Component to lazy load other Stencil components while its scrolled to viewport. 
  */
 @Component({
-    tag: 'st-lazy'
+    tag: 'lazy-cmp'
 })
-export class StLazy {
+export class LazyCmp {
 
     /**
      * Name of component to be lazy loaded 

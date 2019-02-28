@@ -1,12 +1,12 @@
-# st-lazy-fetch
+# lazy-fetch
 
 ## Component to make lazy API calls. Request is done after component is scrolled into viewport  
 
 ## Usage
 ```html
-    <st-lazy-fetch
+    <lazy-fetch
         url="https://jsonplaceholder.typicode.com/users/1">
-    </st-lazy-fetch>
+    </lazy-fetch>
 ```
 
 <!-- Auto Generated Below -->
