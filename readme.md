@@ -159,6 +159,7 @@ import { Component } from '@stencil/core';
 })
 export class MyComponent {
     @Prop() name: string;
+    @Prop() surname: string;
 
     componentWillLoad() {
         console.log('The MyComponent is about to be rendered');
@@ -182,7 +183,7 @@ and page
 <body>
     <div style="height: 1000px"></div>
     <lazy-cmp
-        component="my-cmp">
+        component="my-component">
     </lazy-cmp>
 </body>
 ```
