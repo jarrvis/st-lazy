@@ -1,6 +1,8 @@
 import { Component, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { Lazy, LazyHost, LazyMargin } from '../../utils/utils';
 
+const HEADER_ATTR = 'header-';
+
 /**
  * Component to make lazy API calls. Request is done after component is scrolled into viewport 
  */
@@ -18,6 +20,17 @@ export class LazyFetch {
      * Request headers  
      */
     @Prop() headers?: Headers = new Headers();
+
+    /**
+     * Request header 
+     */
+    @Prop() 'header-?'?: string;
+
+    
+    /**
+     * Request body 
+     */
+    @Prop() body?: string;
 
     /**
      * Http requst type: GET, POST, PUT, DELETE, PATCH  
@@ -44,11 +57,21 @@ export class LazyFetch {
 
     request   : Request;
 
+    
+    componentWillLoad() {
+        [...this.el.attributes]
+            .filter(attr => attr.name.startsWith(HEADER_ATTR))
+            .map(prop => {
+                const name = prop.name.replace(HEADER_ATTR, '');
+                this.headers.set(name, prop.value);
+            })
+    }
   
     componentDidLoad() {
         let options = {
           method: this.method,
-          headers: new Headers(this.headers)
+          headers: new Headers(this.headers),
+          body: this.body,
         }; 
         this.request = new Request(this.url, options);
     }

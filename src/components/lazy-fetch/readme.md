@@ -14,12 +14,14 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                         | Type      | Default         |
-| --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------- |
-| `headers` | --        | Request headers                                                                                                                                                                                     | `Headers` | `new Headers()` |
-| `margin`  | `margin`  | Determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left).  The values can be percentages | `string`  | `undefined`     |
-| `method`  | `method`  | Http requst type: GET, POST, PUT, DELETE, PATCH                                                                                                                                                     | `string`  | `'GET'`         |
-| `url`     | `url`     | Request url                                                                                                                                                                                         | `string`  | `''`            |
+| Property   | Attribute  | Description                                                                                                                                                                                         | Type      | Default         |
+| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------- |
+| `body`     | `body`     | Request body                                                                                                                                                                                        | `string`  | `undefined`     |
+| `header-?` | `header-?` | Request header                                                                                                                                                                                      | `string`  | `undefined`     |
+| `headers`  | --         | Request headers                                                                                                                                                                                     | `Headers` | `new Headers()` |
+| `margin`   | `margin`   | Determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left).  The values can be percentages | `string`  | `undefined`     |
+| `method`   | `method`   | Http requst type: GET, POST, PUT, DELETE, PATCH                                                                                                                                                     | `string`  | `'GET'`         |
+| `url`      | `url`      | Request url                                                                                                                                                                                         | `string`  | `''`            |
 
 
 ## Events

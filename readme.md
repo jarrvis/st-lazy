@@ -19,7 +19,7 @@ Outside of Stencil world you can use web components. To do that you can either
 - put `st-lazy` as dependency in your package.json and import web component that is relevant for you in your js/ts
 - or if outside of npm you can pop this script tag: 
 ```
-<script async defer src='https://unpkg.com/st-lazy@2.0.0/dist/stlazy.js'></script>
+<script async defer src='https://unpkg.com/st-lazy@2.1.0/dist/stlazy.js'></script>
 ``` 
 into your index.html
 Then you can just use web components in your html/jsx 
@@ -197,14 +197,14 @@ As you see component is not loaded untill it's scrolled onto viewport. Then full
 
 ## How to pass props to component?
 
-Option 1: In JSX you can pass `componentProps` key/value object to st-lazy   
+Option 1: In JSX you can pass `componentProps` key/value object to lazy-cmp   
 ```html
   <lazy-cmp
     component="my-component"
     componentProps={{ name: 'Lazy', surname: 'Stencil' }}>
   </lazy-cmp>
 ```
-Option 2: In html you can pass `component-prop-?` attributes to st-lazy
+Option 2: In html you can pass `component-prop-?` attributes to lazy-cmp
 ```html
   <lazy-cmp
     component="my-component"
@@ -217,7 +217,7 @@ or optionally you can pass the componentProps over javascript:
 document.querySelector('lazy-cmp').componentProps = { name: 'Lazy', surname: 'Stencil' }
 ```
 ## I just want to use lazy-cmp to be notifed about scrolling to some html
-Sure just react on the event that st-lazy will throw. Will only be thrown if you pass `event-value` attribute
+Sure just react on the event that lazy-cmp will throw. Will only be thrown if you pass `event-value` attribute
 ```html
   <lazy-cmp
     event-value="contentId">
@@ -254,6 +254,7 @@ gives
 
 `lazy-fetch` is a web component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as `lazy-fetch` is based on it. 
 
+
 ## Example
 ```html
 <body>
@@ -267,3 +268,14 @@ gives
 gives
 
 ![lazy fetch](https://j.gifs.com/xnGB4l.gif)
+
+## How to pass headers?
+
+In html you can use `header-?` attribute
+```html
+  <lazy-fetch
+    url="https://jsonplaceholder.typicode.com/users/1"
+    header-keyid='authorization key'
+    >
+  </lazy-fetch>
+```
