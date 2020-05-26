@@ -55,12 +55,14 @@ export function Lazy(options?: LazyOptions) {
           );
         }
         let io = new IntersectionObserver(
-          (data: any) => {
-            if (data[0].isIntersecting) {
-              this[prop].apply(this);
-              io.disconnect();
-              io = null;
-            }
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                this[prop].apply(this);
+                io.disconnect();
+                io = null;
+              }
+            });
           },
           { rootMargin: margin }
         );
